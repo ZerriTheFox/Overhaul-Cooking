@@ -2,6 +2,7 @@ package net.zerrithefox.overhaulcooking;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.zerrithefox.overhaulcooking.block.ModBlocks;
 import net.zerrithefox.overhaulcooking.items.ModItems;
 import net.zerrithefox.recipe.ModRecipes;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ public class OverhaulCooking implements ModInitializer {
 	public void onInitialize() {
 
         ModItems.registerModItems();
+        ModBlocks.registerModBlocks();
 
         ModRecipes.registerRecipes();
 	}
