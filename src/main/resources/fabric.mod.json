@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "overhaul-cooking",
+	"version": "${version}",
+	"name": "overhaul-cooking",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"ZerriTheFox"
+	],
+	"contact": {
+		"homepage": "",
+		"sources": "https://github.com/ZerriTheFox/Overhaul-Cooking.git"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/overhaul-cooking/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+          "net.zerrithefox.overhaulcooking.OverhaulCooking"
+		],
+		"fabric-datagen": [
+			"net.zerrithefox.overhaulcooking.OverhaulcookingDataGenerator"
+		],
+        "client": [
+            "net.zerrithefox.overhaulcooking.OverhaulcookingClient"
+        ]
+	},
+	"mixins": [
+		"overhaul-cooking.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.17.3",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
