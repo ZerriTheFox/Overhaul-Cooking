@@ -20,13 +20,10 @@ public class ModItems {
     public static final Item ROLLING_PIN = registerItem("rolling_pin", new Item(new Item.Settings()) {
 
     });
-    public static final Item MORTAR = registerItem("mortar_pestle", new Item(new Item.Settings()) {
+    public static final Item PESTLE = registerItem("pestle", new Item(new Item.Settings()) {
 
     });
     public static final Item SPOON = registerItem("spoon", new Item(new Item.Settings()) {
-
-    });
-    public static final Item SPATULA = registerItem("spatula", new Item(new Item.Settings()) {
 
     });
 
