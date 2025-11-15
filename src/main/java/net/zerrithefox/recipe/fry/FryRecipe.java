@@ -1,4 +1,4 @@
-package net.zerrithefox.recipe;
+package net.zerrithefox.recipe.fry;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -12,8 +12,9 @@ import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
+import net.zerrithefox.recipe.RecipeInput;
 
-public record FryingRecipe(Ingredient inputItem, ItemStack output)  implements Recipe<FryingRecipeInput> {
+public record FryRecipe(Ingredient inputItem, ItemStack output)  implements Recipe<RecipeInput> {
 
     @Override
     public DefaultedList<Ingredient> getIngredients() {
@@ -23,10 +24,10 @@ public record FryingRecipe(Ingredient inputItem, ItemStack output)  implements R
 
     }
 
-    /// read in Json files -> new FryingRecipe
+    /// read in Json files -> new FryRecipe
 
     @Override
-    public boolean matches(FryingRecipeInput input, World world) {
+    public boolean matches(RecipeInput input, World world) {
         if(world.isClient()) {
             return false;
         }
@@ -34,7 +35,7 @@ public record FryingRecipe(Ingredient inputItem, ItemStack output)  implements R
     }
 
     @Override
-    public ItemStack craft(FryingRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
+    public ItemStack craft(RecipeInput input, RegistryWrapper.WrapperLookup lookup) {
         return output.copy();
     }
 
@@ -58,24 +59,24 @@ public record FryingRecipe(Ingredient inputItem, ItemStack output)  implements R
         return null ;
     }
 
-    public static class Serializer implements RecipeSerializer<FryingRecipe> {
-        public static final MapCodec<FryingRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(FryingRecipe::inputItem),
-                ItemStack.CODEC.fieldOf("result").forGetter(FryingRecipe::output))
-                .apply(inst, FryingRecipe::new));
+    public static class Serializer implements RecipeSerializer<FryRecipe> {
+        public static final MapCodec<FryRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
+                Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(FryRecipe::inputItem),
+                ItemStack.CODEC.fieldOf("result").forGetter(FryRecipe::output))
+                .apply(inst, FryRecipe::new));
 
-        public static final PacketCodec<RegistryByteBuf, FryingRecipe> STEAM_CODEC = PacketCodec.tuple(
-                Ingredient.PACKET_CODEC, FryingRecipe::inputItem,
-                ItemStack.PACKET_CODEC, FryingRecipe::output,
-                FryingRecipe::new);
+        public static final PacketCodec<RegistryByteBuf, FryRecipe> STEAM_CODEC = PacketCodec.tuple(
+                Ingredient.PACKET_CODEC, FryRecipe::inputItem,
+                ItemStack.PACKET_CODEC, FryRecipe::output,
+                FryRecipe::new);
 
         @Override
-        public MapCodec<FryingRecipe> codec() {
+        public MapCodec<FryRecipe> codec() {
             return CODEC;
         }
 
         @Override
-        public PacketCodec<RegistryByteBuf, FryingRecipe> packetCodec() {
+        public PacketCodec<RegistryByteBuf, FryRecipe> packetCodec() {
             return STEAM_CODEC;
         }
     }

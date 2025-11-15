@@ -1,9 +1,8 @@
 package net.zerrithefox.recipe;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.input.RecipeInput;
 
-public record FryingRecipeInput(ItemStack input) implements RecipeInput {
+public record RecipeInput(ItemStack input) implements net.minecraft.recipe.input.RecipeInput {
     @Override
     public ItemStack getStackInSlot(int slot) {
         return input;

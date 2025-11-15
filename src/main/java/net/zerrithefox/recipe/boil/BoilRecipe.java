@@ -1,4 +1,4 @@
-package net.zerrithefox.recipe;
+package net.zerrithefox.recipe.boil;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -12,8 +12,9 @@ import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
+import net.zerrithefox.recipe.RecipeInput;
 
-public record MixingRecipe(Ingredient inputItem, ItemStack output)  implements Recipe<MixingRecipeInput> {
+public record BoilRecipe(Ingredient inputItem, ItemStack output)  implements Recipe<RecipeInput> {
 
     @Override
     public DefaultedList<Ingredient> getIngredients() {
@@ -23,10 +24,10 @@ public record MixingRecipe(Ingredient inputItem, ItemStack output)  implements R
 
     }
 
-    /// read in Json files -> new MixingRecipe
+    /// read in Json files -> new BoilRecipe
 
     @Override
-    public boolean matches(MixingRecipeInput input, World world) {
+    public boolean matches(RecipeInput input, World world) {
         if(world.isClient()) {
             return false;
         }
@@ -34,7 +35,7 @@ public record MixingRecipe(Ingredient inputItem, ItemStack output)  implements R
     }
 
     @Override
-    public ItemStack craft(MixingRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
+    public ItemStack craft(RecipeInput input, RegistryWrapper.WrapperLookup lookup) {
         return output.copy();
     }
 
@@ -58,24 +59,24 @@ public record MixingRecipe(Ingredient inputItem, ItemStack output)  implements R
         return null;
     }
 
-    public static class Serializer implements RecipeSerializer<MixingRecipe> {
-        public static final MapCodec<MixingRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(MixingRecipe::inputItem),
-                ItemStack.CODEC.fieldOf("result").forGetter(MixingRecipe::output))
-                .apply(inst, MixingRecipe::new));
+    public static class Serializer implements RecipeSerializer<BoilRecipe> {
+        public static final MapCodec<BoilRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
+                Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(BoilRecipe::inputItem),
+                ItemStack.CODEC.fieldOf("result").forGetter(BoilRecipe::output))
+                .apply(inst, BoilRecipe::new));
 
-        public static final PacketCodec<RegistryByteBuf, MixingRecipe> STEAM_CODEC = PacketCodec.tuple(
-                Ingredient.PACKET_CODEC, MixingRecipe::inputItem,
-                ItemStack.PACKET_CODEC, MixingRecipe::output,
-                MixingRecipe::new);
+        public static final PacketCodec<RegistryByteBuf, BoilRecipe> STEAM_CODEC = PacketCodec.tuple(
+                Ingredient.PACKET_CODEC, BoilRecipe::inputItem,
+                ItemStack.PACKET_CODEC, BoilRecipe::output,
+                BoilRecipe::new);
 
         @Override
-        public MapCodec<MixingRecipe> codec() {
+        public MapCodec<BoilRecipe> codec() {
             return CODEC;
         }
 
         @Override
-        public PacketCodec<RegistryByteBuf, MixingRecipe> packetCodec() {
+        public PacketCodec<RegistryByteBuf, BoilRecipe> packetCodec() {
             return STEAM_CODEC;
         }
     }
