@@ -34,6 +34,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.PRESS);
                     }).build());
 
-
+    public static void registerItemGroups() {
+        OverhaulCooking.LOGGER.info("Registering Item Groups for " + OverhaulCooking.MOD_ID);
+    }
 
 }
