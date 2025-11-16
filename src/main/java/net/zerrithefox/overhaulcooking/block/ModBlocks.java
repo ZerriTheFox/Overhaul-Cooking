@@ -40,9 +40,8 @@ public class ModBlocks {
             new Block(AbstractBlock.Settings.create().strength(4f).requiresTool()
                     .sounds(BlockSoundGroup.METAL)));
 
-    public static final Block MIXBOWL = registerBlock("mixing_bowl",
-            new Block(AbstractBlock.Settings.create().strength(4f).requiresTool()
-                    .sounds(BlockSoundGroup.STONE)));
+    public static final Block MIXBOWLBLOCK = registerBlock("mixing_bowl_block",
+            new MixingBowlBlock(AbstractBlock.Settings.create().nonOpaque));
 
     public static final Block OVEN = registerBlock("oven",
             new Block(AbstractBlock.Settings.create().strength(4f).requiresTool()

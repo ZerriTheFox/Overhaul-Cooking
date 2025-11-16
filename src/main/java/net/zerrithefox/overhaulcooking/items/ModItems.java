@@ -28,6 +28,9 @@ public class ModItems {
     public static final Item SPOON = registerItem("spoon", new Item(new Item.Settings()) {
 
     });
+    public static final Item MIXINGBOWL = registerItem("mixing_bowl", new Item(new Item.Settings()) {
+
+    });
 
 
     public static final Item MASHEDPOTATOES = registerItem("mashed_potatoes", new Item(new Item.Settings().food(ModFoodComponents.MASHEDPOTATOES)));

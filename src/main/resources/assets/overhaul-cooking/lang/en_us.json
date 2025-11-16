@@ -5,6 +5,7 @@
   "item.overhaul-cooking.whisk": "Whisk",
   "item.overhaul-cooking.rolling_pin": "Rolling Pin",
   "item.overhaul-cooking.pestle": "Pestle",
+  "item.overhaul-cooking.mixing_bowl_block": "Mixing Bowl",
 
   "block.overhaul-cooking.millstone": "Millstone",
   "block.overhaul-cooking.press": "Press",
@@ -13,7 +14,7 @@
   "block.overhaul-cooking.fermenting_barrel": "Fermenting Barrel",
   "block.overhaul-cooking.cooking_pot": "Pot",
   "block.overhaul-cooking.pan": "Pan",
-  "block.overhaul-cooking.mixing_bowl": "Mixing Bowl",
+  "block.overhaul-cooking.mixing_bowl_block": "Mixing Bowl",
   "block.overhaul-cooking.oven": "Oven",
 
   "item.overhaul-cooking.mashed_potatoes": "Mashed Potatoes",
